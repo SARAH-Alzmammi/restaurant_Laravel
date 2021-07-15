@@ -5,6 +5,7 @@
     <div class="container">
 
 
+        
        <table class="table">
         <thead>
         <tr>
@@ -17,15 +18,14 @@
         </tr>
         </thead>
         <tbody>
-            {{$key=0}}
-        @foreach($orders as $order)
+  
+        @foreach($orders as $key=>$order)
        
 
             <tr>
                 <th scope="col">{{$key+1}}</th>
                 <td>{{(int)$order['created_at']}}</td>
                
-                // {{-- {{json_decode($order['cart'], true)['name']}} --}}
                 <td>
                     
                     @foreach(json_decode($order['cart'], true) as $dish)
@@ -34,7 +34,7 @@
 
                     @endforeach
                 </td>
-                {{-- =================== --}}
+
                 <td>{{$order['status']}}</td>
 
 <td>  <form action="{{route('orders.destroy',$order['id'])}}"   style="display: inline-block" method="post">

@@ -22,3 +22,4 @@ class AppServiceProvider extends ServiceProvider{
       //
    }
 }
+mysql://b92889a7c59da7:4e26470b@us-cdbr-east-04.cleardb.com/heroku_1e149bd80c1a723?reconnect=true

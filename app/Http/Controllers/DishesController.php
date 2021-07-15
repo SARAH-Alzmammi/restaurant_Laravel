@@ -49,8 +49,9 @@ class DishesController extends Controller
 
         $dish= Dishes::create([
             'name'=>$request->input('name'),
-            'description'=>$request->input('description'),'price'=>$request->input('price'),
-            'image_path'=>$newImageName
+            'description'=>$request->input('description'),
+            'price'=>$request->input('price'),
+            'image_path'=>$imageName
         ]);
         return redirect('/dishes/admin');
     }

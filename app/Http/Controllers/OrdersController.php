@@ -46,12 +46,15 @@ class OrdersController extends Controller
         $result=array();
       
         $totalPrice = 0;
-        $totalQty =count(\session('cart'));
+        $totalQty = 0;
 
        if (\session()->has('cart') ){
-    
+
+        $totalQty = count(\session('cart'));
+
         $selectedDishes= Dishes::select('id','name','price','description')->whereIn('id',\session('cart'))->get();
         $selectedDishesArray = $selectedDishes->toArray();
+
         $idesArray=\session('cart');
 
        
@@ -92,6 +95,10 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'table_number' => 'required|integer|min:1',
+        ]);
+    
 
         $cart = json_encode(array_values($request->get('order')));
         $userId = \Auth::user()->id;
@@ -103,7 +110,7 @@ class OrdersController extends Controller
         $order->save();
 
         $request->session()->forget('cart');
-     return redirect('orders.index');
+     return redirect('orders');
     }
 
 

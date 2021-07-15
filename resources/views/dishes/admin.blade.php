@@ -29,7 +29,7 @@
               <form action="{{route('dishes.destroy',$dish['id'])}}"class='w-100' method="post">
                 @method('DELETE')
                 @csrf
-                <button class="btn btn-light text-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                <button class="btn btn-light text-danger w-100" onclick="return confirm('Are you sure?')">Delete</button>
                 </form>
             </td>
           </tr>
