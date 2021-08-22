@@ -18,42 +18,39 @@ use App\Http\Controllers\UsersController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/home', function () {
-
-    return redirect('/dishes');
-});
 
 Route::get('/', function () {
     return redirect('/dishes');
 });
 
-Route::get('/controlPanel', function () {
-    return view('control_panel.index');
-});
-Route::get('/dishes/admin', function () {
-    $dishes = Dishes::all();
-    // dd($dishes);
-    return view('dishes.admin',compact('dishes'));
-});
-Route::get('/not-admin', function () {
-    return "You are not an admin";
-});
-
-
-// Route::get('/sayHi',function (){
-// echo "Hi";
-// })->middleware('AuthorizationCheck','auth');
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('dishes',DishesController::class);
 
 
-Route::resource('orders',OrdersController::class);
-Route::resource('control_panel',OrdersController::class);
-Route::resource('users',UsersController::class);
+Route::resource('orders',OrdersController::class)->middleware('auth');
+Route::resource('control_panel',OrdersController::class)->middleware('auth');
+Route::resource('users',UsersController::class)->middleware('auth');
+
+
+Route::get('/controlPanel', function () {
+    return view('controlPanel.index');
+})->middleware('auth');
+
+Route::get('/dishes/admin', function () {
+    $dishes = Dishes::all();
+
+    return view('dishes.admin',compact('dishes'));
+})->middleware('auth');
+
+
+
+
+Route::get('/not-admin', function () {
+    return "You are not an admin";
+});
+
 
 
 
@@ -61,8 +58,8 @@ Route::get('addToCart/{id}',function(Request $request,$id){
 
     $request->session()->push('cart',$id);
     $request->session()->save();
-//    dd($request->session()->get('cart'));
 
+    session(['addingMessage' => 'Dish was added to your cart successfully']);
    return redirect()->route('dishes.index');
 
 })->name('addToCart')->middleware('auth');

@@ -1,11 +1,12 @@
-@extends('layouts.app')
+@extends('controlPanel.index')
 
-@section('content')
+@section('options')
+
 <div class="container">
     <div class="row justify-content-center ">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header bg-warning text-light">{{ __('Create New User') }}</div>
+                <div class="card-header btnBackground text-light">{{ __('Create New User') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('users.store') }}">
@@ -66,7 +67,7 @@
 
                         <div class="mb-3">
 
-                                <button type="submit" class="btn btn-warning text-light">
+                                <button type="submit" class="btn btnBackground text-light">
                                     {{ __('Create') }}
                                 </button>
 

@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@extends('controlPanel.index')
 
-@section('content')
+@section('options')
+
 
     <div class="container">
 
@@ -25,7 +26,7 @@
             <input class="  form-control  " type="file" id="image" name="image_path">
         </div>
 
-        <button type="submit" class="btn btn-warning  text-light">{{__('Crete')}}</button>
+        <button type="submit" class="btn btnBackground  text-light">{{__('Crete')}}</button>
     </form>
     </div>
 @endsection

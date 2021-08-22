@@ -1,6 +1,7 @@
-@extends('layouts.app')
-@section('title',__('Order'))
-@section('content')
+@extends('controlPanel.index')
+
+@section('options')
+
 
     <div class="container">
 

@@ -11,7 +11,9 @@ class DishesController extends Controller
 {
 
     public function __construct(){
+        $this->middleware('auth')->except('index');
         $this->middleware('AuthorizationCheck')->except('index');
+     
     }
 
     /**

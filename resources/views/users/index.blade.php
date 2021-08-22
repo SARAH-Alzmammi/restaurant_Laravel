@@ -1,9 +1,10 @@
-@extends('layouts.app')
+@extends('controlPanel.index')
 
-@section('content')
+@section('options')
+
 
     <div class="container">
-      <a href="{{route('users.create')}}" class="btn btn-warning text-light">Add New user</a>
+      <a href="{{route('users.create')}}" class="btn btnBackground text-light">Add New user</a>
        <table class="table mt-4">
         <thead>
           <tr>

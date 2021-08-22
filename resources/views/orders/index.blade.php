@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('controlPanel.index')
 @section('title',__('Order'))
-@section('content')
+@section('options')
 @if(isset($orders))
     <div class="container">
 

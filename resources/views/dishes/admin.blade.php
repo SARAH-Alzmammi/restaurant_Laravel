@@ -1,8 +1,9 @@
-@extends('layouts.app')
+@extends('controlPanel.index')
 
-@section('content')
+@section('options')
+
     <div class="container">
-<a href="{{route('dishes.create')}}" class="btn btn-warning text-light">Add New Dish</a>
+<a href="{{route('dishes.create')}}" class="btn btnBackground text-light">Add New Dish</a>
 
        <table class="table mt-4">
         <thead>
@@ -21,11 +22,12 @@
 @foreach($dishes as $dish)
           <tr>
             <th scope="row">{{$dish['id']}}</th>
-            <td><img src="{{asset('images/'.$dish->image_path)}}" class="card-img-top w-25 " alt="..."></td>
+            <td><img src="{{asset('images/'.$dish->image_path)}}" class="card-img-top" style="width: 120px; hight:60px"alt="..."></td>
             <td>{{$dish['name']}}</td>
             <td>{{$dish['description']}}</td>
             <td>{{$dish['price']}}</td>
-            <td><a href="{{route('dishes.edit',$dish['id'])}}" class='btn btn-light text-warning mb-3 w-100'>Edit</a>
+            <td>
+              <a href="{{route('dishes.edit',$dish['id'])}}" class='btn btn-light text-warning mb-3 w-100'>Edit</a>
               <form action="{{route('dishes.destroy',$dish['id'])}}"class='w-100' method="post">
                 @method('DELETE')
                 @csrf

@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('controlPanel.index')
 
-@section('content')
+@section('options')
 
     <div class="container">
     <form action="{{route('users.update',$user['id'])}}" method="post" enctype="multipart/form-data">
@@ -24,7 +24,7 @@
         </div>
         {{-- === --}}
 
-        <button type="submit" class="btn btn-warning  text-light">{{__('Update')}}</button>
+        <button type="submit" class="btn btnBackground  text-light">{{__('Update')}}</button>
     </form>
     </div>
 @endsection

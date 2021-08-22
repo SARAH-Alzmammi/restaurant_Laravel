@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     
-    <link href="css/style.css" rel="stylesheet">
+    <link href="/app.css" rel="stylesheet">
 
 </head>
 <body class=" ">
@@ -48,13 +48,13 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link text-warning " href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link textColor " href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link text-warning " href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link textColor " href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
@@ -64,7 +64,7 @@
                             
                             @if ( Auth::user()->role=='admin')
                             <li class="nav-item mt-1">
-<a class="dropdown-item text-warning "href="{{ url('controlPanel') }}" >
+<a class="dropdown-item textColor "href="{{ url('controlPanel') }}" >
     {{ __('Control panel') }}
 </a>
 </li>
@@ -80,18 +80,18 @@
                             <li class="nav-item dropdown pe-5">
 
 
-                                <a class="nav-link dropdown-toggle text-warning " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle textColor " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                  Hello,   {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdown">
                             
                                     @if ( Auth::user()->role!='admin')
-                                    <a class="dropdown-item text-warning " href="{{ route('orders.index') }}" >
+                                    <a class="dropdown-item textColor " href="{{ route('orders.index') }}" >
                                      {{ __('My orders') }}
                                  </a>
                                  @endif
-<a class="dropdown-item text-warning " href="{{ route('logout') }}"
+<a class="dropdown-item textColor " href="{{ route('logout') }}"
 onclick="event.preventDefault();
               document.getElementById('logout-form').submit();">
  {{ __('Logout') }}
